@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>Datastore and Firebase Auth Example</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet"href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+
+</head>
+<body>
+<h1>Datastore and Firebase Assignment 1</h1>
+<div id="firebase-auth-container"></div>
+<button id="sign-out" hidden="true">Sign out</button>
+<div id="login-info" hidden="true">
+    <h2>Driver Search Details</h2>
+<form method="POST" action="/driver_results">
+  <label>First Name:</label>
+  <input type="text" name="first_name" required>
+
+  <label>Last Name:</label>
+  <input type="text" name="last_name" required>
+
+  <label>Nationality:</label>
+  <input type="text" name="nationality" required>
+
+  <label>Birth Date:</label>
+  <input type="date" name="birth_date" required>
+
+  <label>Team ID:</label>
+  <input type="number" name="team_id" required>
+
+  <label>Number:</label>
+  <input type="number" name="number" required>
+
+  <label>Wins:</label>
+  <input type="number" name="wins" required>
+
+  <input type="submit" value="Submit">
+</form>
+
+    {% if success %}
+    <p style="color:green">Driver successfully added!</p>
+    {% endif %}
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <title>Datastore and Firebase Auth Example</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet"href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+
+</head>
+<body>
+<h1>Datastore and Firebase Assignment 1</h1>
+<div id="firebase-auth-container"></div>
+<button id="sign-out" hidden="true">Sign out</button>
+<div id="login-info" hidden="true">
+<h1>Compare Teams</h1>
+  <form method="POST" action="/team_details">
+  <button type="submit">Update Driver</button>
+</form>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h2>{{ team1.name }}</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Statistic</th>
+            <th>{{ team1.name }}</th>
+            <th>{{ team2.name }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for stat, val1, highlight in comparison %}
+            {% set val2 = team2.get(stat, 0) %}
+            <tr>
+              <td>{{ stat }}</td>
+              <td{% if highlight == 'green' and val1 > val2 %} class="bg-success"{% endif %}>{{ val1 }}</td>
+              <td{% if highlight == 'green' and val2 > val1 %} class="bg-success"{% endif %}>{{ val2 }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <h2>{{ team2.name }}</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Statistic</th>
+            <th>{{ team2.name }}</th>
+            <th>{{ team1.name }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for stat, val2, highlight in comparison %}
+            {% set val1 = team1.get(stat, 0) %}
+            <tr>
+              <td>{{ stat }}</td>
+              <td{% if highlight == 'green' and val2 > val1 %} class="bg-success"{% endif %}>{{ val2 }}</td>
+              <td{% if highlight == 'green' and val1 > val2 %} class="bg-success"{% endif %}>{{ val1 }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+</body>
+</html>

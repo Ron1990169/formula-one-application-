@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <title>Datastore and Firebase Auth Example</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet"href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+
+</head>
+<body>
+<h1>Datastore and Firebase Assignment 1</h1>
+<div id="firebase-auth-container"></div>
+<button id="sign-out" hidden="true">Sign out</button>
+<div id="login-info" hidden="true">
+    <body>
+  <h1>Add Driver</h1>
+    {% if message %}
+      <div style="color: green">{{ message }}</div>
+    {% endif %}
+    <form method="POST" action="/add_driver">
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" name="first_name" required><br><br>
+
+      <label for="last_name">Last Name:</label>
+      <input type="text" id="last_name" name="last_name" required><br><br>
+
+      <label for="nationality">Nationality:</label>
+      <input type="text" id="nationality" name="nationality" required><br><br>
+
+      <label for="birth_date">Birth Date:</label>
+      <input type="date" id="birth_date" name="birth_date" required><br><br>
+
+      <label for="team_id">Team ID:</label>
+      <input type="text" id="team_id" name="team_id" required><br><br>
+
+      <label for="number">Number:</label>
+      <input type="text" id="number" name="number" required><br><br>
+
+      <label for="wins">Wins:</label>
+      <input type="number" id="wins" name="wins" required><br><br>
+
+      <label for="age">age:</label>
+      <input type="number" id="age" name="age" required><br><br>
+
+      <input type="submit" value="Submit">
+    </form>
+    </body>
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+</body>
+</html>

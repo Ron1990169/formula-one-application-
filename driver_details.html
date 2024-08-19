@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <title>Datastore and Firebase Auth Example</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet"href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+
+</head>
+<body>
+<h1>Datastore and Firebase Assignment 1</h1>
+<div id="firebase-auth-container"></div>
+<button id="sign-out" hidden="true">Sign out</button>
+<div id="login-info" hidden="true">
+    <h1>Driver Comparison</h1>
+    <form method="POST" action="/driver_details">
+  <button type="submit">Update Driver</button>
+</form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Stat</th>
+        <th>{{ driver1.name }}</th>
+        <th>{{ driver2.name }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for stat, val1, color in comparison %}
+        <tr>
+          <td>{{ stat }}</td>
+          <td{% if color == 'green' %} style="color: green;"{% endif %}>{{ val1 }}</td>
+          <td{% if color == 'red' %} style="color: red;"{% endif %}>{{ driver2[stat] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+</body>
+</html>

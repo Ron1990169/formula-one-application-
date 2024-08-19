@@ -1,0 +1,14 @@
+indexes:
+- kind: Team
+  properties:
+  - name: name
+  - name: email
+
+- kind: Driver
+  properties:
+  - name: name
+  - name: email
+
+
+# Path: CPA/Assignment/index.yaml
+

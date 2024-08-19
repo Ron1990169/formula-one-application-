@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <title>Datastore and Firebase Auth Example</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet"href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+
+</head>
+<body>
+<h1>Formula One CPA Assignment 1</h1>
+<div id="firebase-auth-container"></div>
+<button id="sign-out" hidden="true">Sign out</button>
+<div id="login-info" hidden="true">
+    <h2>Login Info</h2>
+      {% if user_data %}
+        <dl>
+            <dt>Name:</dt><dd>{{ user_data['name'] }}</dd>
+            <dt>Email:</dt><dd>{{ user_data['email'] }}</dd>
+        </dl>
+        <form action="/add_driver"
+              method="post">
+            Initiate the Driver entry process in the datastore<input type="submit"/>
+        </form>
+        <form action="/add_team" method="post">
+            Initiate the Teams entry process in the datastore<input type="submit"/>
+        </form>
+        <form action="/list_teams" method="post">
+            Team List<input type="submit"/>
+        </form>
+        <form action="/list_driver" method="post">
+            Racers List<input type="submit"/>
+        </form>
+        <form action="/driver_results" method="post">
+            Pull a driver search by name <input><input type="submit"/>
+        </form>
+        <form action="/team_results" method="post">
+            Pull a teams search by name<input><input type="submit"/>
+        </form>
+        <form action="/edit_driver" method="post">
+            Edit Racer Detail's<input type="submit"/>
+        </form>
+        <form action="/edit_team" method="post">
+            Edit Team Detail's<input type="submit"/>
+        </form>
+        <form action="/teams" method="post">
+            To delete team enter team id<input><label>
+            <input type="text" name="team_id">
+        </label><input type="submit"/>
+        </form>
+        <form action="/drivers" method="post">
+            To delete driver Enter driver Name <input><label>
+            <input type="text" name="name">
+        </label><input type="submit"/>
+        </form>
+        <form action="/team_details" method="post">
+            Compare a teams search by race wins and world titles<input type="submit"/>
+        </form>
+        <form action="/driver_details" method="post">
+            Compare a driver search by wins and age<input type="submit"/>
+        </form>
+        {% for i in data %}
+        Name: {{ i['name'] }}<br/>
+        ID: {{ i['id'] }}<br/>
+        Boolean: {{ i['boolean'] }}<br/>
+        {% endfor %}
+        {% elif error_message %}
+        <p>Error Message: {{ error_message }}</p>
+{% endif %}
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+</body>
+</html>

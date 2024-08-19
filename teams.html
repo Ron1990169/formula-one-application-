@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <title>Datastore and Firebase Auth Example</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet"href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+
+</head>
+<body>
+<h1>Datastore and Firebase Assignment 1</h1>
+<div id="firebase-auth-container"></div>
+<button id="sign-out" hidden="true">Sign out</button>
+<div id="login-info" hidden="true">
+    <h1>Team Details</h1>
+    <p>Team Name: {{ name }}</p>
+    <p>Year Founded: {{ year_founded }}</p>
+    <p>Race Wins: {{ race_wins }}</p>
+    <p>World Titles: {{ world_titles }}</p>
+    <p>Team Principal: {{ team_principal }}</p>
+    <p>Team Base: {{ team_base }}</p>
+    <p>Championships: {{ championships }}</p>
+    <h2>Drivers:</h2>
+    <ul>
+      {% for driver in driver_list %}
+        <li>{{ driver.name }} - {{ driver.nationality }} - {{ driver.number }}</li>
+      {% endfor %}
+    </ul>
+<form method="POST" action="/teams">
+  <button type="submit">Update Driver</button>
+</form>
+
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+<script src="{{ url_for('static', filename='app-setup.js') }}"></script>
+</body>
+</html>
