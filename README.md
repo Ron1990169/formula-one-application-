@@ -7,18 +7,18 @@ User Management:
 
 createUserInfo(claims) and retrieveUserInfo(claims) create and retrieve user data from the datastore.
 login(), logout(), and root() manage user sessions and authentication.
-Driver and Team Management:
 
+Driver and Team Management:
 Functions like retrieveDriverList(first_name) and retrieveTeamList(name) fetch lists of drivers and teams.
 updateDriver() and updateTeam() update existing driver and team information in the datastore.
 add_driver() and add_team() add new drivers and teams.
 delete_driver() and delete_team() remove drivers and teams from the datastore.
-Search and Comparison:
 
+Search and Comparison:
 search_driver() and search_team() allow users to search for drivers and teams based on specified criteria.
 compare_drivers() and compare_teams() compare statistics of drivers and teams, highlighting differences.
-Flask Routes:
 
+Flask Routes:
 Several routes are defined for handling different functionalities such as displaying lists of drivers and teams, searching for them, adding new entries, 
 and updating or deleting existing ones.
 
